@@ -58,7 +58,7 @@ public class LinesEditView extends LinearLayout {
         contentTextColor = typedArray.getColor(R.styleable.LinesEditView_classic_contentTextColor, Color.parseColor("#8A000000"));
         contentTextSize = typedArray.getDimensionPixelSize(R.styleable.LinesEditView_classic_contentTextSize, dp2px(context, 14));
         contentViewHeight = typedArray.getDimensionPixelSize(R.styleable.LinesEditView_classic_contentViewHeight,
-                dp2px(context, 140));
+                dp2px(context, 80));
         typedArray.recycle();
         //
         init();
