@@ -1,9 +1,11 @@
-package com.classichu.lineseditview;
+package com.wangfeixixi.edittext;
 
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.text.Editable;
+import android.text.InputFilter;
+import android.text.Spanned;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.util.TypedValue;
@@ -12,6 +14,10 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * ignoreCnOrEn 为false的时候
@@ -64,6 +70,24 @@ public class LinesEditView extends LinearLayout {
         init();
     }
 
+    //表情符号filter
+    InputFilter inputFilterEmoJi = new InputFilter() {
+
+        Pattern pattern = Pattern.compile("[^a-zA-Z0-9\\u4E00-\\u9FA5_]");
+
+        @Override
+        public CharSequence filter(CharSequence charSequence, int i, int i1, Spanned spanned, int i2, int i3) {
+            Matcher matcher = pattern.matcher(charSequence);
+            if (!matcher.find()) {
+                return null;
+            } else {
+                Toast.makeText(mContext, "只能输入汉字,英文，数字", Toast.LENGTH_SHORT).show();
+                return "";
+            }
+
+        }
+    };
+
     private void init() {
         View view = LayoutInflater.from(mContext).inflate(R.layout.layout_lines_edit_view, this);
         id_et_input = (EditText) view.findViewById(R.id.id_et_input);
@@ -72,7 +96,7 @@ public class LinesEditView extends LinearLayout {
         if (this.getBackground() == null) {
             this.setBackgroundResource(R.drawable.item_bg_grey);
         }
-
+        id_et_input.setFilters(new InputFilter[]{inputFilterEmoJi});
         id_et_input.addTextChangedListener(mTextWatcher);
         id_et_input.setHint(hintText);
         id_et_input.setHintTextColor(hintTextColor);
@@ -182,11 +206,11 @@ public class LinesEditView extends LinearLayout {
         if (ignoreCnOrEn) {
             int nowCount = calculateLengthIgnoreCnOrEn(id_et_input.getText().toString());
             //
-            id_tv_input.setText(String.valueOf((MAX_COUNT - nowCount)) + "/" + MAX_COUNT);
+            id_tv_input.setText(String.valueOf((nowCount)) + "/" + MAX_COUNT);
         } else {
             long nowCount = calculateLength(id_et_input.getText().toString());
             //
-            id_tv_input.setText(String.valueOf((MAX_COUNT - nowCount)) + "/" + MAX_COUNT);
+            id_tv_input.setText(String.valueOf((nowCount)) + "/" + MAX_COUNT);
         }
 
     }

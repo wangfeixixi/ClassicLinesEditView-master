@@ -38,7 +38,7 @@ attr
 			默认 app:maxCount="240"   
 			默认 app:IgnoreCnOrEn="true"
 		-->
- <com.classichu.lineseditview.LinesEditView
+ <com.wangfeixixi.edittext.LinesEditView
         android:layout_margin="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -6,10 +6,9 @@
     android:orientation="vertical"
     tools:context="com.classichu.classiclineseditview.MainActivity">
 
-    <com.classichu.lineseditview.LinesEditView
+    <com.wangfeixixi.edittext.LinesEditView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
         android:layout_margin="10dp" />
 
 </RelativeLayout>
