@@ -78,12 +78,18 @@ public class LinesEditView extends LinearLayout {
         @Override
         public CharSequence filter(CharSequence charSequence, int i, int i1, Spanned spanned, int i2, int i3) {
             Matcher matcher = pattern.matcher(charSequence);
-            if (!matcher.find()) {
+            if (!EmojiUtils.containsEmoji(String.valueOf(charSequence))) {
                 return null;
             } else {
                 Toast.makeText(mContext, "只能输入汉字,英文，数字", Toast.LENGTH_SHORT).show();
                 return "";
             }
+//            if (!matcher.find()) {
+//                return null;
+//            } else {
+//                Toast.makeText(mContext, "只能输入汉字,英文，数字", Toast.LENGTH_SHORT).show();
+//                return "";
+//            }
 
         }
     };
