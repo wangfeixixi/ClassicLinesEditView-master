@@ -81,7 +81,7 @@ public class LinesEditView extends LinearLayout {
             if (!EmojiUtils.containsEmoji(String.valueOf(charSequence))) {
                 return null;
             } else {
-                Toast.makeText(mContext, "只能输入汉字,英文，数字", Toast.LENGTH_SHORT).show();
+                Toast.makeText(mContext, "不能输入表情符号!", Toast.LENGTH_SHORT).show();
                 return "";
             }
 //            if (!matcher.find()) {
