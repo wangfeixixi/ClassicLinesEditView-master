@@ -23,7 +23,7 @@ Add it in your root build.gradle at the end of repositories:
 Step 2. Add the dependency  [![](https://jitpack.io/v/louisgeek/ClassicLinesEditView.svg)](https://jitpack.io/#louisgeek/ClassicLinesEditView)
 
   	dependencies {
-	          compile 'com.github.louisgeek:ClassicLinesEditView:x.x.x'
+	           implementation 'com.github.wangfeixixi:ClassicLinesEditView-master:v1.2'
 	  }
 
 
